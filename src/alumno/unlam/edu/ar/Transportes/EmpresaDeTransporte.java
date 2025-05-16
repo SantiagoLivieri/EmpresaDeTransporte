@@ -19,11 +19,7 @@ public class EmpresaDeTransporte {
 		Double profundidadDePaquete = 0.3;
 		Double profundidadDePaquete2 = 0.4;
 		Double profundidadDePaquete3 = 0.3;
-		
-		Integer IdPaquete = 1;
-		Integer IdPaquete2 = 2;
-		Integer IdPaquete3 = 3;
-		
+			
 		Integer ciudadesQueViajaElPaquete = 1;
 		Ciudades argentina = null;
 		
@@ -43,9 +39,9 @@ public class EmpresaDeTransporte {
 		Double pesoDeCargaCamion = 16000.0;
 	    Integer ciudadesQueViajaElPaqueteEnCamion = 10000;
 	   
-		Paquete notbook = new Paquete(pesoDePaquete, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.MENDOZA, IdPaquete);   // 
-		Paquete celular = new Paquete(pesoDePaquete2, altoDePaquete2, anchoDePaquete2, profundidadDePaquete2,argentina.BUENOS_AIRES, IdPaquete2);		
-		Paquete impresora = new Paquete(pesoDePaquete3, altoDePaquete3, anchoDePaquete3, profundidadDePaquete3,argentina.MENDOZA,IdPaquete3);
+		Paquete notbook = new Paquete(pesoDePaquete, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.BUENOS_AIRES);
+		Paquete celular = new Paquete(pesoDePaquete2, altoDePaquete2, anchoDePaquete2, profundidadDePaquete2,argentina.BUENOS_AIRES);		
+		Paquete impresora = new Paquete(pesoDePaquete3, altoDePaquete3, anchoDePaquete3, profundidadDePaquete3,argentina);
 		
 		Bicicleta olmo = new Bicicleta(pesoDeCargaBicileta,cantidadDePaquetesQueLlevaLaBici,volumenDeCargaBicicleta,ciudadesQueViajaElPaqueteEnBicicleta);		
 		olmo.agregarPaqueteAlEnvio(notbook);

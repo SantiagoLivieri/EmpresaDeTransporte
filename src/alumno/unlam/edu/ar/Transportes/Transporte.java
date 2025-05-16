@@ -5,6 +5,7 @@ abstract class Transporte {
 		protected Double maxVolumenDeCarga;
 		protected Double maxPesoDeCarga;
 		protected Integer maxCiudadesQueRecorreElVehiculo;
+		
 
 		Transporte(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo){
 			this.maxVolumenDeCarga = maxVolumenDeCarga;
@@ -21,7 +22,7 @@ abstract class Transporte {
 		abstract Double calcularPesoDelEnvioTotal(); 		
 		abstract int cantidadDeCiudadesPorEnvio();
 		
-		abstract void llevarPaquete(Integer maxCiudadesQueRecorreElVehiculo);
+		abstract Boolean llevarPaquete(Integer maxCiudadesQueRecorreElVehiculo);
 		
 		
 		

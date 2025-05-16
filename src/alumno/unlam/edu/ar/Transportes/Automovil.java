@@ -109,7 +109,7 @@ public class Automovil extends Transporte{
 	
 	
 	@Override
-	void llevarPaquete(Integer maxCiudadesQueRecorre) {
+	public Boolean llevarPaquete(Integer maxCiudadesQueRecorre) {
 		Double volumenDelPaquete = 0.0;
 		Double pesoDelpaquete =0.0;
 		Integer cantidadDeCiudadesTotal = 0;
@@ -120,9 +120,11 @@ public class Automovil extends Transporte{
 		
 		if((volumenDelPaquete <= MAX_VOLUMEN_CARGA) && (pesoDelpaquete <= MAX_PESO_CARGA) && (cantidadDeCiudadesTotal <= MAX_CIUDADES_QUE_RECORRE)){
 			System.out.println("El Auto llevara el paquete" + " " + contadorDeCiudades);
+			return true;
 			//return arrayDePaquetes[];
 		}else {
 			System.out.println("El Auto no llevara el paquete");
+			return false;
 		}	 
 	}
 }

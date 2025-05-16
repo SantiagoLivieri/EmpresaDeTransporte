@@ -7,6 +7,8 @@ public class Bicicleta extends Transporte{
 	private final Double MAX_PESO_CARGA = 15.0;
 	private final Integer MAX_CIUDADES_QUE_RECORRE_VEHICULO = 1;
 	Paquete[] arrayDePaquetes = new Paquete[MAX_CANTIDAD_PAQUETES];
+	private static Integer idBicicletaGlobal = 0;
+	private  Integer idBicicleta;
 	
 	
 	Bicicleta(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo, Integer maxCantidadPaquetes) {
@@ -16,6 +18,8 @@ public class Bicicleta extends Transporte{
 		maxPesoDeCarga = this.MAX_PESO_CARGA;
 		maxCiudadesQueRecorreElVehiculo = this.MAX_CIUDADES_QUE_RECORRE_VEHICULO;
 		Paquete[]  arrayDePaquetes= this.arrayDePaquetes;	
+		idBicicleta =idBicicletaGlobal;
+		idAutoIncremental();
 	}
 	
 	Bicicleta(Double maxPesoDeCarga, Integer maxCantidadPaquetes, Double maxVolumenDeCarga, Integer maxCiudadesQueRecorreElVehiculo){
@@ -25,8 +29,14 @@ public class Bicicleta extends Transporte{
 		maxCiudadesQueRecorreElVehiculo = this.MAX_CIUDADES_QUE_RECORRE_VEHICULO;
 		maxCantidadPaquetes = this.MAX_CANTIDAD_PAQUETES;
 		Paquete[]  arrayDePaquetes= this.arrayDePaquetes;
+		idBicicleta =idBicicletaGlobal;
+		idAutoIncremental();
 	}
 
+	public void idAutoIncremental() {
+		setIdBicicleta(++idBicicletaGlobal);
+	}
+	
 	@Override
 	public Integer numeroDePaquete(Paquete paquete) {
 		System.out.println(paquete.getidPaquete());
@@ -110,7 +120,7 @@ public class Bicicleta extends Transporte{
 	}
 				
 	@Override
-	public void llevarPaquete(Integer maxCiudadesQueRecorreElVehiculo) {
+	public Boolean llevarPaquete(Integer maxCiudadesQueRecorreElVehiculo) {
 		Double volumenDelPaquete = 0.0;
 		Double pesoDelpaquete =0.0;
 		Integer cantidadDeCiudadesTotal=0;
@@ -123,15 +133,25 @@ public class Bicicleta extends Transporte{
 		if(arrayDePaquetes[0].getCiudad() != null) {
 			if((volumenDelPaquete <= MAX_VOLUMEN_CARGA) && (pesoDelpaquete <= MAX_PESO_CARGA) && (0 < cantidadDeCiudadesTotal && cantidadDeCiudadesTotal <= MAX_CIUDADES_QUE_RECORRE_VEHICULO)){
 				System.out.println("La Bicicleta llevara el paquete");
-				//return arrayDePaquetes[];
+				return true;				
 			}else {
 				System.out.println("La bicileta no llevara el paquete");
+				return false;
 			}	 
 			
 		}else {
 			System.out.println("La bicileta  no llevara el paquete, porque el primer paquete no tiene destino");
+			return false;
 		}
 		
+	}
+
+	public Integer getIdBicicleta() {
+		return idBicicleta;
+	}
+
+	private void setIdBicicleta(Integer idBicicleta) {
+		this.idBicicleta = idBicicleta;
 	}
 
 }

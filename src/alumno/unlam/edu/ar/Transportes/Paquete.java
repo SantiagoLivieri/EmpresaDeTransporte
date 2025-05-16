@@ -8,27 +8,32 @@ public class Paquete {
 	private Double ancho;
 	private Double profundidad;
 	private Double volumen;
-	private Integer idPaquete;
+	private static Integer idPaqueteGlobal = 0;
+	private  Integer idPaquete;
 	private Ciudades ciudadqQueViajaElPaquete;
 	
-	Paquete(Double peso, Double alto, Double ancho, Double profundidad, Integer idPaquete){
+	Paquete(Double peso, Double alto, Double ancho, Double profundidad){
 		this.peso = peso;
 		this.alto = alto;
 		this.ancho = ancho;
 		this.profundidad = profundidad;
-		this.idPaquete = idPaquete;
+		idPaquete =idPaqueteGlobal;
+		idAutoIncremental();
 	}
 	
-	Paquete(Double peso, Double alto, Double ancho, Double profundidad,Ciudades ciudadqQueViajaElPaquete ,Integer idPaquete){
+	Paquete(Double peso, Double alto, Double ancho, Double profundidad,Ciudades ciudadqQueViajaElPaquete){
 		this.peso = peso;
 		this.alto = alto;
 		this.ancho = ancho;
 		this.profundidad = profundidad;
-		this.idPaquete = idPaquete;
 		this.ciudadqQueViajaElPaquete = ciudadqQueViajaElPaquete;
+		idPaquete =idPaqueteGlobal;
+		idAutoIncremental();
 	}
 	
-	
+	public void idAutoIncremental() {
+		setIdPaquete(++idPaqueteGlobal);
+	}
 
 	public Integer getidPaquete() {
 		return idPaquete;
@@ -72,6 +77,14 @@ public class Paquete {
 	
 	public Ciudades getCiudad() {
 		return ciudadqQueViajaElPaquete;
+	}
+
+	public Integer getIdPaquete() {
+		return idPaquete;
+	}
+
+	public void setIdPaquete(Integer idPaquete) {
+		this.idPaquete = idPaquete;
 	}
 	
 }
