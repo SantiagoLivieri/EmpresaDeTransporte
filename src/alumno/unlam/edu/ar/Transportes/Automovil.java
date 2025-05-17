@@ -6,6 +6,9 @@ public class Automovil extends Transporte{
 	private final Double MAX_PESO_CARGA = 500.0;
 	private final Integer MAX_CIUDADES_QUE_RECORRE = 3;
 	private final Integer MAX_CANTIDAD_PAQUETES = 10;
+	private static Integer idAutoGlobal = 0;
+	private  Integer idAuto;
+	private String idAutoPatente = "A";
 	int contadorDePaquetesAgregados;
 	int contadorDeCiudades;
 	Paquete[] arrayDePaquetes = new Paquete[MAX_CANTIDAD_PAQUETES];
@@ -20,8 +23,14 @@ public class Automovil extends Transporte{
 		Paquete[] arrayDePaquetes = this.arrayDePaquetes;
 		this.contadorDePaquetesAgregados = 0;
 		this.contadorDeCiudades = 0;
+		idAuto =idAutoGlobal;
+		idAutoPatente += idAutoGlobal;
+		idAutoIncremental();
 	}
 	
+	public void idAutoIncremental() {
+		setIdAuto(++idAutoGlobal);
+	}
 	
 	@Override
 	public Integer numeroDePaquete(Paquete paquete) {
@@ -126,5 +135,17 @@ public class Automovil extends Transporte{
 			System.out.println("El Auto no llevara el paquete");
 			return false;
 		}	 
+	}
+	
+	public String getIdAutoPatente() {
+		return idAutoPatente;
+	}
+
+	public Integer getIdAuto() {
+		return idAuto;
+	}
+
+	public void setIdAuto(Integer idAuto) {
+		this.idAuto = idAuto;
 	}
 }

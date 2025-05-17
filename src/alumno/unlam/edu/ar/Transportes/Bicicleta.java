@@ -9,7 +9,7 @@ public class Bicicleta extends Transporte{
 	Paquete[] arrayDePaquetes = new Paquete[MAX_CANTIDAD_PAQUETES];
 	private static Integer idBicicletaGlobal = 0;
 	private  Integer idBicicleta;
-	
+	private String idBicicletaPatente = "B";
 	
 	Bicicleta(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo, Integer maxCantidadPaquetes) {
 		super(maxVolumenDeCarga, maxPesoDeCarga, maxCiudadesQueRecorreElVehiculo);
@@ -19,6 +19,7 @@ public class Bicicleta extends Transporte{
 		maxCiudadesQueRecorreElVehiculo = this.MAX_CIUDADES_QUE_RECORRE_VEHICULO;
 		Paquete[]  arrayDePaquetes= this.arrayDePaquetes;	
 		idBicicleta =idBicicletaGlobal;
+		idBicicletaPatente += idBicicletaGlobal;
 		idAutoIncremental();
 	}
 	
@@ -30,6 +31,7 @@ public class Bicicleta extends Transporte{
 		maxCantidadPaquetes = this.MAX_CANTIDAD_PAQUETES;
 		Paquete[]  arrayDePaquetes= this.arrayDePaquetes;
 		idBicicleta =idBicicletaGlobal;
+		idBicicletaPatente += idBicicletaGlobal;
 		idAutoIncremental();
 	}
 
@@ -145,7 +147,11 @@ public class Bicicleta extends Transporte{
 		}
 		
 	}
-
+	
+	public String getIdBicicletaPatente() {
+		return idBicicletaPatente;
+	}
+	
 	public Integer getIdBicicleta() {
 		return idBicicleta;
 	}

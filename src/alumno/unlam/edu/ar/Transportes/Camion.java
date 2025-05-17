@@ -6,6 +6,9 @@ public class Camion extends Transporte{
 	private final Double MAX_PESO_CARGA = 16000.0;//en Kilos
 	private final Integer MAX_CANTIDAD_PAQUETES = 1000;
 	private final Integer MAX_CIUDADES_QUE_RECORRE = 1000;
+	private static Integer idCamiontaGlobal = 0;
+	private  Integer idCamion;
+	private String idCamionPatente = "C";
 	int contadorDePaquetesAgregados;
 	int contadorDeCiudades;
 	Paquete[] arrayDePaquetes = new Paquete[MAX_CANTIDAD_PAQUETES];
@@ -19,6 +22,13 @@ public class Camion extends Transporte{
 		Paquete[] arrayDePaquetes = this.arrayDePaquetes;
 		this.contadorDePaquetesAgregados = 0;
 		this.contadorDeCiudades = 0;
+		idCamion =idCamiontaGlobal;
+		idCamionPatente += idCamiontaGlobal;
+		idAutoIncremental();
+	}
+	
+	public void idAutoIncremental() {
+		setIdCamion(++idCamiontaGlobal);
 	}
 
 	@Override
@@ -115,6 +125,18 @@ public class Camion extends Transporte{
 			System.out.println("El Camion no llevara el paquete");
 			return false;
 		}	 
+	}
+	
+	public String getIdCamionPatente() {
+		return idCamionPatente;
+	}
+	
+	public Integer getIdCamion() {
+		return idCamion;
+	}
+
+	private void setIdCamion(Integer idCamion) {
+		this.idCamion = idCamion;
 	}
 
 }

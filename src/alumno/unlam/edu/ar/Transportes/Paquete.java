@@ -10,6 +10,7 @@ public class Paquete {
 	private Double volumen;
 	private static Integer idPaqueteGlobal = 0;
 	private  Integer idPaquete;
+	private String idPaquetePatente = "P";
 	private Ciudades ciudadqQueViajaElPaquete;
 	
 	Paquete(Double peso, Double alto, Double ancho, Double profundidad){
@@ -18,6 +19,7 @@ public class Paquete {
 		this.ancho = ancho;
 		this.profundidad = profundidad;
 		idPaquete =idPaqueteGlobal;
+		idPaquetePatente += idPaqueteGlobal;
 		idAutoIncremental();
 	}
 	
@@ -28,6 +30,7 @@ public class Paquete {
 		this.profundidad = profundidad;
 		this.ciudadqQueViajaElPaquete = ciudadqQueViajaElPaquete;
 		idPaquete =idPaqueteGlobal;
+		idPaquetePatente += idPaqueteGlobal;
 		idAutoIncremental();
 	}
 	
@@ -79,6 +82,10 @@ public class Paquete {
 		return ciudadqQueViajaElPaquete;
 	}
 
+	public String getIdPaquetePatente() {
+		return idPaquetePatente;
+	}
+	
 	public Integer getIdPaquete() {
 		return idPaquete;
 	}

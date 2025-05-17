@@ -50,10 +50,14 @@ public class EmpresaDeTransporte {
 		olmo.llevarPaquete(ciudadesQueViajaElPaquete);
 		
 		Automovil renault = new Automovil(volumenDeCargaAutomovil, pesoDeCargaAutomovil, ciudadesQueViajaElPaqueteEnAutomovil);
+		Automovil renault1 = new Automovil(volumenDeCargaAutomovil, pesoDeCargaAutomovil, ciudadesQueViajaElPaqueteEnAutomovil);
+		renault.agregarPaqueteAlEnvio(impresora);
 		renault.agregarPaqueteAlEnvio(impresora);
 		renault.agregarPaqueteAlEnvio(celular);
 		renault.agregarPaqueteAlEnvio(notbook);
 		renault.agregarPaqueteAlEnvio(impresora);
+		System.out.println(renault.getIdAutoPatente());
+		System.out.println(renault.getIdAutoPatente());
 		renault.llevarPaquete(ciudadesQueViajaElPaqueteEnAutomovil);
 		
 		Camion iveco = new Camion(volumenDeCargaCamion,pesoDeCargaCamion,ciudadesQueViajaElPaqueteEnCamion);		
