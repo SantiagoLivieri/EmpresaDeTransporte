@@ -2,7 +2,7 @@ package alumno.unlam.edu.ar.Transportes;
 
 public class EmpresaDeTransporte {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		//PAQUETES
 		Double pesoDePaquete = 7.5;
 		Double pesoDePaquete2 = 0.5;
@@ -43,11 +43,12 @@ public class EmpresaDeTransporte {
 		Paquete celular = new Paquete(pesoDePaquete2, altoDePaquete2, anchoDePaquete2, profundidadDePaquete2,argentina.BUENOS_AIRES);		
 		Paquete impresora = new Paquete(pesoDePaquete3, altoDePaquete3, anchoDePaquete3, profundidadDePaquete3,argentina);
 		
-		Bicicleta olmo = new Bicicleta(pesoDeCargaBicileta,cantidadDePaquetesQueLlevaLaBici,volumenDeCargaBicicleta,ciudadesQueViajaElPaqueteEnBicicleta);		
+		//Bicicleta(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo, Integer maxCantidadPaquetes)
+		Bicicleta olmo = new Bicicleta(volumenDeCargaBicicleta, pesoDeCargaBicileta,ciudadesQueViajaElPaqueteEnBicicleta,cantidadDePaquetesQueLlevaLaBici);		
 		olmo.agregarPaqueteAlEnvio(notbook);
-		olmo.agregarPaqueteAlEnvio(notbook);
+		//olmo.agregarPaqueteAlEnvio(notbook);
 		olmo.agregarPaqueteAlEnvio(celular);
-		olmo.llevarPaquete(ciudadesQueViajaElPaquete);
+		olmo.llevarPaquete();
 		
 		Automovil renault = new Automovil(volumenDeCargaAutomovil, pesoDeCargaAutomovil, ciudadesQueViajaElPaqueteEnAutomovil);
 		Automovil renault1 = new Automovil(volumenDeCargaAutomovil, pesoDeCargaAutomovil, ciudadesQueViajaElPaqueteEnAutomovil);
@@ -58,13 +59,30 @@ public class EmpresaDeTransporte {
 		renault.agregarPaqueteAlEnvio(impresora);
 		System.out.println(renault.getIdAutoPatente());
 		System.out.println(renault.getIdAutoPatente());
-		renault.llevarPaquete(ciudadesQueViajaElPaqueteEnAutomovil);
+		renault.llevarPaquete();
 		
 		Camion iveco = new Camion(volumenDeCargaCamion,pesoDeCargaCamion,ciudadesQueViajaElPaqueteEnCamion);		
 		iveco.agregarPaqueteAlEnvio(impresora);
 		iveco.agregarPaqueteAlEnvio(celular);
 		iveco.agregarPaqueteAlEnvio(notbook);
-		iveco.llevarPaquete(ciudadesQueViajaElPaqueteEnCamion);
+		iveco.llevarPaquete();
+	}*/
+	
+	
+	private Transporte vehiculo;
+	private Paquete paquete;
+
+	EmpresaDeTransporte(Transporte vehiculo, Paquete paquete){
+		this.vehiculo = vehiculo;
+		this.paquete = paquete;
+	}
+	
+	public Boolean enviarPedidoADestino() {
+		 if(this.paquete != null && this.vehiculo != null){
+			 vehiculo.llevarPaquete();
+			 return true;
+		 }
+		return false;
 	}
 
 }

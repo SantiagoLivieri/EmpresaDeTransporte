@@ -16,13 +16,13 @@ abstract class Transporte {
 		
 		abstract  Integer numeroDePaquete(Paquete paquete);
 		abstract  Boolean existePaquete(Paquete paquete);
-		abstract void agregarPaqueteAlEnvio(Paquete paquete); 
+		abstract Boolean agregarPaqueteAlEnvio(Paquete paquete); 
 		
 		abstract Double calcularVolumenDelEnvioTotal(); 		
 		abstract Double calcularPesoDelEnvioTotal(); 		
 		abstract int cantidadDeCiudadesPorEnvio();
 		
-		abstract Boolean llevarPaquete(Integer maxCiudadesQueRecorreElVehiculo);
+		abstract Boolean llevarPaquete();
 		
 		
 		

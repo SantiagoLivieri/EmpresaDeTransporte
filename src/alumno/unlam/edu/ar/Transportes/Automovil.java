@@ -53,16 +53,18 @@ public class Automovil extends Transporte{
 		 	}
 			       
 	@Override
-	public void agregarPaqueteAlEnvio(Paquete paquete) {	
+	public Boolean agregarPaqueteAlEnvio(Paquete paquete) {	
 		 for (int i = 0 ; i < arrayDePaquetes.length ; i++){	 
 			 if(paquete != null){
 				//Si el paquete que agrego no es nulo			
 			 if(!existePaquete(paquete)) {	
 								arrayDePaquetes[contadorDePaquetesAgregados] = paquete;
 								contadorDePaquetesAgregados++;
+								return true;
 						}
 					}
-				 }	 
+				 }
+		return false;	 
 			 }
 		
 	@Override
@@ -118,7 +120,7 @@ public class Automovil extends Transporte{
 	
 	
 	@Override
-	public Boolean llevarPaquete(Integer maxCiudadesQueRecorre) {
+	public Boolean llevarPaquete() {
 		Double volumenDelPaquete = 0.0;
 		Double pesoDelpaquete =0.0;
 		Integer cantidadDeCiudadesTotal = 0;
