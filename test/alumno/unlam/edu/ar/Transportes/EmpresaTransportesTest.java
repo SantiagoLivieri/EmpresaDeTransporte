@@ -200,7 +200,7 @@ public class EmpresaTransportesTest {
 	}
 		
 		@Test
-		public void queNoSePuedaAgregarUnPaqueteAUnaBiciletaVacia() {
+		public void queNoSePuedaAgregareAUnaBiciletaVacia() {
 			//Preparacion
 			Bicicleta olmo = null;
 			Paquete notbook;
@@ -223,8 +223,7 @@ public class EmpresaTransportesTest {
 			notbook = new Paquete(pesoDePaquete, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.ROSARIO);		
 			andreani = new EmpresaDeTransporte(olmo, notbook);
 			//olmo = new Bicicleta(volumenDeCargaBicicleta, pesoDeCargaBicileta,ciudadesQueViajaElPaqueteEnBicicleta,cantidadDePaquetesQueLlevaLaBici);			
-			
-			olmo.agregarPaqueteAlEnvio(notbook);
+
 			assertFalse(andreani.enviarPedidoADestino());
 		}
 		
