@@ -3,7 +3,7 @@ package alumno.unlam.edu.ar.Transportes;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Paquete {
+public class Paquete implements Comparable<Paquete>{
 	private Double peso;
 	private Double alto;
 	private Double ancho;
@@ -103,5 +103,12 @@ public class Paquete {
 		Paquete other = (Paquete) obj;
 		return Objects.equals(idPaquetePatente, other.idPaquetePatente);
 	}
+
+	@Override
+	public int compareTo(Paquete o) {
+		return this.getIdPaquetePatente().compareTo(o.getIdPaquetePatente());
+	}
+
+
 	
 }

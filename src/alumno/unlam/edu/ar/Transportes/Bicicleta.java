@@ -45,7 +45,7 @@ public class Bicicleta extends Transporte{
 	public Boolean existePaquete(Paquete paquete) {
 		 for (Paquete paquete2 : arrayDePaquetes) {				 
 				 if(paquete2 != null) {					
-					 if(paquete.getIdPaquetePatente() == paquete2.getIdPaquetePatente()) {
+					 if(paquete.equals(paquete2)) {
 						//Da verdadero si el paquete que estoy agregando es igual al paquete que ya agrege
 				    	  return  true;  
 					 }

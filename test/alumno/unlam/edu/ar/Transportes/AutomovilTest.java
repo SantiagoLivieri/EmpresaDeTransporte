@@ -13,9 +13,9 @@ public class AutomovilTest {
 		Paquete notbook, celular, impresora;
 		
 		//PAQUETES
-		Double pesoDePaquete = 7.5;
-		Double pesoDePaquete2 = 0.5;
-		Double pesoDePaquete3 = 450.5;
+		Double pesoDePaquete = 400.5;
+		Double pesoDePaquete2 = 10.5;
+		Double pesoDePaquete3 = 20.5;
 		
 		Double altoDePaquete = 0.3;
 		Double altoDePaquete2 = 0.5;
@@ -34,21 +34,22 @@ public class AutomovilTest {
 				
 		//AUTOMOVIL
 		Double volumenDeCargaAutomovil = 2.0;
-		Double pesoDeCargaAutomovil = 15.0;
+		Double pesoDeCargaAutomovil = 500.0;
 	    Integer ciudadesQueViajaElPaqueteEnAutomovil = 3;
 	    
 		//Ejecucion
 		renault = new Automovil(volumenDeCargaAutomovil, pesoDeCargaAutomovil, ciudadesQueViajaElPaqueteEnAutomovil);
+		
 		notbook = new Paquete(pesoDePaquete, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.BUENOS_AIRES);
-		celular = new Paquete(pesoDePaquete, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.MARDELPLATA);
-		impresora = new Paquete(pesoDePaquete3, altoDePaquete3, anchoDePaquete3, profundidadDePaquete3,argentina.MARDELPLATA);
+		celular = new Paquete(pesoDePaquete2, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.MARDELPLATA);
+		impresora = new Paquete(pesoDePaquete3, altoDePaquete3, anchoDePaquete3, profundidadDePaquete3,argentina.SALTA);
 		
 		
 		renault.agregarPaqueteAlEnvio(notbook);
 		renault.agregarPaqueteAlEnvio(celular);
 		renault.agregarPaqueteAlEnvio(impresora);
 		
-		//VALIDACION
+		//VALIDACION	
 		assertTrue(renault.llevarPaquete());
 }
 
