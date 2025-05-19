@@ -34,12 +34,8 @@ public class Paquete {
 		idAutoIncremental();
 	}
 	
-	public void idAutoIncremental() {
+	private void idAutoIncremental() {
 		setIdPaquete(++idPaqueteGlobal);
-	}
-
-	public Integer getidPaquete() {
-		return idPaquete;
 	}
 	
 	public Double getPeso() {
@@ -86,11 +82,7 @@ public class Paquete {
 		return idPaquetePatente;
 	}
 	
-	public Integer getIdPaquete() {
-		return idPaquete;
-	}
-
-	public void setIdPaquete(Integer idPaquete) {
+	private void setIdPaquete(Integer idPaquete) {
 		this.idPaquete = idPaquete;
 	}
 	

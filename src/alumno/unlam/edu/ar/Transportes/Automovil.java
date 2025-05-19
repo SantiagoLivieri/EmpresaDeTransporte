@@ -1,5 +1,9 @@
 package alumno.unlam.edu.ar.Transportes;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 public class Automovil extends Transporte{
 
 	private final Double MAX_VOLUMEN_CARGA = 2.0;
@@ -12,8 +16,7 @@ public class Automovil extends Transporte{
 	int contadorDePaquetesAgregados;
 	int contadorDeCiudades;
 	Paquete[] arrayDePaquetes = new Paquete[MAX_CANTIDAD_PAQUETES];
-	Ciudades [] ciudadesUnicas = new Ciudades[MAX_CIUDADES_QUE_RECORRE];
-	
+	private Set<Ciudades> ciudadesUnicas2 = new HashSet<>();
 	
 	Automovil(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorre) {
 		super(maxVolumenDeCarga, maxPesoDeCarga, maxCiudadesQueRecorre);
@@ -28,21 +31,21 @@ public class Automovil extends Transporte{
 		idAutoIncremental();
 	}
 	
-	public void idAutoIncremental() {
+	private void idAutoIncremental() {
 		setIdAuto(++idAutoGlobal);
 	}
 	
 	@Override
-	public Integer numeroDePaquete(Paquete paquete) {
-		System.out.println(paquete.getidPaquete());
-		return paquete.getidPaquete();
+	public String numeroPaquetePatente(Paquete paquete) {
+		System.out.println(paquete.getIdPaquetePatente());
+		return paquete.getIdPaquetePatente();
 	}
 	
 	@Override
 	public Boolean existePaquete(Paquete paquete) {
 		 for (Paquete paquete2 : arrayDePaquetes) {				 
 				 if(paquete2 != null) {					
-					 if(paquete.getidPaquete() == paquete2.getidPaquete()) {
+					 if(paquete.getIdPaquetePatente() == paquete2.getIdPaquetePatente()) {
 						//Da verdadero si el paquete que estoy agregando es igual al paquete que ya agrege
 				    	  return  true;  
 					 }
@@ -92,28 +95,12 @@ public class Automovil extends Transporte{
 		for (int i = 0; i < contadorDePaquetesAgregados; i++) {
 	        Paquete paquete = arrayDePaquetes[i];
 	        if (paquete != null && paquete.getCiudad() != null) {
-	            Ciudades ciudad = paquete.getCiudad(); 
-	            boolean ciudadYaAgregada = false;
 
-	            // Verificar si la ciudad ya está en el array
-	            for (int j = 0; j < contadorDeCiudades; j++) {
-	                if (ciudadesUnicas[j].equals(ciudad)) {
-	                    ciudadYaAgregada = true;
-	                    return MAX_CIUDADES_QUE_RECORRE + 1;
-	                }
-	            }
-
-	            // Si no está, la agregamos
-	            if (!ciudadYaAgregada) {
-	                if (contadorDeCiudades >= MAX_CIUDADES_QUE_RECORRE) {
-	                    return MAX_CIUDADES_QUE_RECORRE + 1; // Se excedió el límite
-	                }
-	                ciudadesUnicas[contadorDeCiudades] = ciudad;
-	                contadorDeCiudades++;
-	            }
-	        }
-		}   
-	    
+	        	if(ciudadesUnicas2.add(paquete.getCiudad())) {
+		            contadorDeCiudades++;
+	        	}	                      
+	        }              
+		}     
 	    return contadorDeCiudades;
 	}
 		
@@ -149,5 +136,22 @@ public class Automovil extends Transporte{
 
 	public void setIdAuto(Integer idAuto) {
 		this.idAuto = idAuto;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idAutoPatente);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Automovil other = (Automovil) obj;
+		return Objects.equals(idAutoPatente, other.idAutoPatente);
 	}
 }

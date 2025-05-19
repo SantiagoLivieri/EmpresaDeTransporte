@@ -1,5 +1,7 @@
 package alumno.unlam.edu.ar.Transportes;
 
+import java.util.Objects;
+
 public class Bicicleta extends Transporte{
 
 	private final Integer MAX_CANTIDAD_PAQUETES = 2;
@@ -14,7 +16,6 @@ public class Bicicleta extends Transporte{
 	Paquete[] arrayDePaquetes = new Paquete[MAX_CANTIDAD_PAQUETES];
 	Ciudades [] ciudadesUnicas = new Ciudades[MAX_CIUDADES_QUE_RECORRE_VEHICULO];
 	
-	//Transporte(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo)
 	Bicicleta(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo, Integer maxCantidadPaquetes) {
 		super(maxVolumenDeCarga, maxPesoDeCarga, maxCiudadesQueRecorreElVehiculo);
 		maxCantidadPaquetes = this.MAX_CANTIDAD_PAQUETES;
@@ -29,55 +30,22 @@ public class Bicicleta extends Transporte{
 		idAutoIncremental();
 	}
 	
-	/*
-	//Transporte(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo)
-	Bicicleta(Double maxVolumenDeCarga, Integer maxCiudadesQueRecorreElVehiculo, Double maxPesoDeCarga, Integer maxCantidadPaquetes){
-		super( maxVolumenDeCarga, maxPesoDeCarga, maxCiudadesQueRecorreElVehiculo );
-		maxVolumenDeCarga = this.MAX_VOLUMEN_CARGA;
-		maxPesoDeCarga = this.MAX_PESO_CARGA;
-		maxCiudadesQueRecorreElVehiculo = this.MAX_CIUDADES_QUE_RECORRE_VEHICULO;
-		maxCantidadPaquetes = this.MAX_CANTIDAD_PAQUETES;
-		Paquete[]  arrayDePaquetes= this.arrayDePaquetes;
-		this.contadorDePaquetesAgregados = 0;
-		this.contadorDeCiudades = 0;
-		idBicicleta =idBicicletaGlobal;
-		idBicicletaPatente += idBicicletaGlobal;
-		idAutoIncremental();
-	}*/
-
-	public void idAutoIncremental() {
+	private void idAutoIncremental() {
 		setIdBicicleta(++idBicicletaGlobal);
 	}
 	
+		
 	@Override
-	public Integer numeroDePaquete(Paquete paquete) {
-		System.out.println(paquete.getidPaquete());
-		return paquete.getidPaquete();
-	}
-	
-	
 	public String numeroPaquetePatente(Paquete paquete) {
 		System.out.println(paquete.getIdPaquetePatente());
 		return paquete.getIdPaquetePatente();
 	}
 	
-	
-	/*@Override
-	public Boolean existePaquete(Paquete paquete) {
-		// boolean existe = false;
-		 for (Paquete paquete2 : arrayDePaquetes) {
-			 if(paquete2 != null && paquete2.getIdPaquetePatente().equals(paquete.getIdPaquetePatente())) {
-		    	  return true;       
-			 }
-		 }		 	   			
-			return false;		       
-	   }*/
-		
 	@Override
 	public Boolean existePaquete(Paquete paquete) {
 		 for (Paquete paquete2 : arrayDePaquetes) {				 
 				 if(paquete2 != null) {					
-					 if(paquete.getidPaquete() == paquete2.getidPaquete()) {
+					 if(paquete.getIdPaquetePatente() == paquete2.getIdPaquetePatente()) {
 						//Da verdadero si el paquete que estoy agregando es igual al paquete que ya agrege
 				    	  return  true;  
 					 }
@@ -102,24 +70,6 @@ public class Bicicleta extends Transporte{
 		return false;	 
 			 }
 	
-	
-	/*
-	@Override
-	public void agregarPaqueteAlEnvio(Paquete paquete) {
-
-		Paquete[] agregarPaquetesAlArray = new Paquete[MAX_CANTIDAD_PAQUETES];
-		 		
-		 for (int i = 0 ; i < arrayDePaquetes.length ; i++){
-			 if(!existePaquete(paquete)) {
-			 agregarPaquetesAlArray[MAX_CANTIDAD_PAQUETES-i-1] = paquete;
-		 
-			if((arrayDePaquetes[i] != agregarPaquetesAlArray[i])){				
-					arrayDePaquetes[MAX_CANTIDAD_PAQUETES-i-1] = paquete;					
-				}				
-			}
-		}
-	}*/
-		
 	@Override			
 	public Double calcularVolumenDelEnvioTotal() {
 		Double volumenDelEnvioTotal = 0.0;
@@ -171,35 +121,7 @@ public class Bicicleta extends Transporte{
 	    
 	    return contadorDeCiudades;
 	}
-	
-	/*
-	@Override
-	public int cantidadDeCiudadesPorEnvio() {
-		int cantidadDeCiudadesPorEnvio = 0;
-		Paquete[] compararCiudadesDeArray = new Paquete[MAX_CANTIDAD_PAQUETES];
-		compararCiudadesDeArray= arrayDePaquetes;
-		
-		if(arrayDePaquetes[cantidadDeCiudadesPorEnvio].getCiudad() != null) {
-			cantidadDeCiudadesPorEnvio++;		
-		for (int i = 0; i < arrayDePaquetes.length; i++) {
-			if(arrayDePaquetes[i].getCiudad() != null) {				
-			for (int j = 4; j > arrayDePaquetes.length; j--) {
-
-					if(compararCiudadesDeArray[j-3].getCiudad() != null) {
-						if(arrayDePaquetes[i].getCiudad().equals(compararCiudadesDeArray[j-3].getCiudad())) {
-							//Si es la misma Ciudad no hace nada
-							}else {//Si son diferentes Ciudades
-								cantidadDeCiudadesPorEnvio++;
-							}	
-						}
-				 	}	
-				}
-			}
-		}
-		return cantidadDeCiudadesPorEnvio;
-	}
-	*/
-				
+			
 	@Override
 	public Boolean llevarPaquete() {
 		Double volumenDelPaquete = 0.0;
@@ -237,6 +159,26 @@ public class Bicicleta extends Transporte{
 
 	private void setIdBicicleta(Integer idBicicleta) {
 		this.idBicicleta = idBicicleta;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(idBicicletaPatente);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bicicleta other = (Bicicleta) obj;
+		return Objects.equals(idBicicletaPatente, other.idBicicletaPatente);
 	}
 
 }

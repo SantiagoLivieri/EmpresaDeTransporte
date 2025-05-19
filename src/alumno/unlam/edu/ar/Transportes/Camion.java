@@ -1,5 +1,7 @@
 package alumno.unlam.edu.ar.Transportes;
 
+import java.util.Objects;
+
 public class Camion extends Transporte{
 	
 	private final Double MAX_VOLUMEN_CARGA = 20.0;
@@ -27,21 +29,21 @@ public class Camion extends Transporte{
 		idAutoIncremental();
 	}
 	
-	public void idAutoIncremental() {
+	private void idAutoIncremental() {
 		setIdCamion(++idCamiontaGlobal);
 	}
 
 	@Override
-	public Integer numeroDePaquete(Paquete paquete) {
-		System.out.println(paquete.getidPaquete());
-		return paquete.getidPaquete();
+	public String numeroPaquetePatente(Paquete paquete) {
+		System.out.println(paquete.getIdPaquetePatente());
+		return paquete.getIdPaquetePatente();
 	}
 
 	@Override
 	public Boolean existePaquete(Paquete paquete) {
 		for (Paquete paquete2 : arrayDePaquetes) {				 
 			 if(paquete2 != null) {					
-				 if(paquete.getidPaquete() == paquete2.getidPaquete()) {
+				 if(paquete.getIdPaquetePatente() == paquete2.getIdPaquetePatente()) {
 					//Da verdadero si el paquete que estoy agregando es igual al paquete que ya agrege
 			    	  return  true;  
 				 }
@@ -139,6 +141,26 @@ public class Camion extends Transporte{
 
 	private void setIdCamion(Integer idCamion) {
 		this.idCamion = idCamion;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(idCamionPatente);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Camion other = (Camion) obj;
+		return Objects.equals(idCamionPatente, other.idCamionPatente);
 	}
 
 }
