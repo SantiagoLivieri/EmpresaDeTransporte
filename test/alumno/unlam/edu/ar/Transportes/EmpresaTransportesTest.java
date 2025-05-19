@@ -222,8 +222,8 @@ public class EmpresaTransportesTest {
 			//Ejecucion
 			notbook = new Paquete(pesoDePaquete, altoDePaquete, anchoDePaquete, profundidadDePaquete,argentina.ROSARIO);		
 			andreani = new EmpresaDeTransporte(olmo, notbook);
-			//olmo = new Bicicleta(volumenDeCargaBicicleta, pesoDeCargaBicileta,ciudadesQueViajaElPaqueteEnBicicleta,cantidadDePaquetesQueLlevaLaBici);			
-
+			
+			//VALIDACION
 			assertFalse(andreani.enviarPedidoADestino());
 		}
 		

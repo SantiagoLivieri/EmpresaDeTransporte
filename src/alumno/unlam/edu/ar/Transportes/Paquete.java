@@ -1,6 +1,7 @@
 package alumno.unlam.edu.ar.Transportes;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Paquete {
 	private Double peso;
@@ -84,6 +85,23 @@ public class Paquete {
 	
 	private void setIdPaquete(Integer idPaquete) {
 		this.idPaquete = idPaquete;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idPaquetePatente);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paquete other = (Paquete) obj;
+		return Objects.equals(idPaquetePatente, other.idPaquetePatente);
 	}
 	
 }

@@ -135,15 +135,12 @@ public class Bicicleta extends Transporte{
 		
 		if(arrayDePaquetes[0].getCiudad() != null) {
 			if((volumenDelPaquete <= MAX_VOLUMEN_CARGA) && (pesoDelpaquete <= MAX_PESO_CARGA) && (0 < cantidadDeCiudadesTotal && cantidadDeCiudadesTotal <= MAX_CIUDADES_QUE_RECORRE_VEHICULO)){
-				System.out.println("La Bicicleta llevara el paquete");
 				return true;				
 			}else {
-				System.out.println("La bicileta no llevara el paquete");
 				return false;
 			}	 
 			
 		}else {
-			System.out.println("La bicileta  no llevara el paquete, porque el primer paquete no tiene destino");
 			return false;
 		}
 		

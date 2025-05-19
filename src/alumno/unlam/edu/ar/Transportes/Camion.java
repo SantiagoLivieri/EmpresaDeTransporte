@@ -122,11 +122,9 @@ public class Camion extends Transporte{
 		cantidadDeCiudadesTotal = cantidadDeCiudadesPorEnvio();
 		
 		if((volumenDelPaquete <= MAX_VOLUMEN_CARGA) && (pesoDelpaquete <= MAX_PESO_CARGA) && (cantidadDeCiudadesTotal <= MAX_CIUDADES_QUE_RECORRE)){
-			System.out.println("El Camion llevara el paquete" + " " + contadorDeCiudades);
 			return true;
 			//return arrayDePaquetes[];
 		}else {
-			System.out.println("El Camion no llevara el paquete");
 			return false;
 		}	 
 	}
