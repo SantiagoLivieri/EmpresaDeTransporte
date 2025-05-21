@@ -7,12 +7,17 @@ public class EmpresaDeTransporte {
 	
 	private Transporte vehiculo;
 	private Paquete paquete;
-	private List<Paquete> paquetes; 
 
 	EmpresaDeTransporte(Transporte vehiculo, Paquete paquete){
 		this.vehiculo = vehiculo;
 		this.paquete = paquete;
-		this.paquetes = new ArrayList<>();
+	}
+	
+	public Boolean asignarPaqueteAlVehiculo() {
+		if(vehiculo.agregarPaqueteAlEnvio(paquete)) {
+			return true;
+		}
+		return false;
 	}
 	
 	public Boolean enviarPedidoADestino() {
@@ -22,7 +27,7 @@ public class EmpresaDeTransporte {
 		 }
 		return false;
 	}
-
+	
 }
 
 

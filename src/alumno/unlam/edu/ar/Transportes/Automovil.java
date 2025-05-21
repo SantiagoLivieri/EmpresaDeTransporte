@@ -17,7 +17,7 @@ public class Automovil extends Transporte{
 	int contadorDePaquetesAgregados;
 	int contadorDeCiudades;
 	private List<Paquete> paquetes; 
-	private Set<Ciudades> ciudadesUnicas2 = new HashSet<>();
+	private Set<Ciudades> ciudadesUnicas = new HashSet<>();
 	
 	Automovil(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorre) {
 		super(maxVolumenDeCarga, maxPesoDeCarga, maxCiudadesQueRecorre);
@@ -95,7 +95,7 @@ public class Automovil extends Transporte{
 	        Paquete paquete = paquetes.get(i);
 	        if (paquete != null && paquete.getCiudad() != null) {
 
-	        	if(ciudadesUnicas2.add(paquete.getCiudad())) {
+	        	if(ciudadesUnicas.add(paquete.getCiudad())) {
 		            contadorDeCiudades++;
 	        	}	                      
 	        }              
