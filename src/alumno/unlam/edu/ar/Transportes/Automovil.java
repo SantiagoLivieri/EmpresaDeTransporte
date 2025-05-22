@@ -14,18 +14,15 @@ public class Automovil extends Transporte{
 	private static Integer idAutoGlobal = 0;
 	private  Integer idAuto;
 	private String idAutoPatente = "A";
-	int contadorDePaquetesAgregados;
 	int contadorDeCiudades;
-	private List<Paquete> paquetes; 
-	private Set<Ciudades> ciudadesUnicas = new HashSet<>();
+	private List<Ciudades> ciudadesUnicas; 
 	
 	Automovil(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorre) {
 		super(maxVolumenDeCarga, maxPesoDeCarga, maxCiudadesQueRecorre);
 		maxVolumenDeCarga = this.MAX_VOLUMEN_CARGA;
 		maxPesoDeCarga = this.MAX_PESO_CARGA;
 		maxCiudadesQueRecorre = this.MAX_CIUDADES_QUE_RECORRE;
-		this.paquetes = new ArrayList<>();
-		this.contadorDePaquetesAgregados = 0;
+		ciudadesUnicas = new ArrayList<>();
 		this.contadorDeCiudades = 0;
 		idAuto =idAutoGlobal;
 		this.idAutoPatente += idAutoGlobal;
@@ -37,74 +34,20 @@ public class Automovil extends Transporte{
 	}
 	
 	@Override
-	public String numeroPaquetePatente(Paquete paquete) {
-		System.out.println(paquete.getIdPaquetePatente());
-		return paquete.getIdPaquetePatente();
-	}
-	
-	@Override
-	public Boolean existePaquete(Paquete paquete) {
-		 for (Paquete paquete2 : paquetes) {				 
-				 if(paquete2 != null) {					
-					 if(paquete.equals(paquete2)) {
-						//Da verdadero si el paquete que estoy agregando es igual al paquete que ya agrege
-				    	  return  true;  
-					 }
-						//Da falso si el paquete es diferente		      
-				 	}		 
-			 	}//Da falso si el paquete es nulo 
-		 return false; 	
-		 	}
-			
-	@Override
-	public Boolean agregarPaqueteAlEnvio(Paquete paquete) {	
-			if(paquete != null ){
-				if(!existePaquete(paquete)) {
-					//Si el paquete que agrego no es nulo	
-					paquetes.add(paquete);
-					contadorDePaquetesAgregados++;
-					return true;
-				}
-		}		
-		return false;
-	}
-		
-	@Override
-	public Double calcularVolumenDelEnvioTotal() {
-		Double volumenDelEnvioTotal = 0.0;
-		for (int i = 0; i < paquetes.size(); i++) {
-			if(paquetes.get(i) != null )
-			volumenDelEnvioTotal += paquetes.get(i).calcularVolumen();
-		}
-		return volumenDelEnvioTotal;
-	}
-	
-	@Override
-	public Double calcularPesoDelEnvioTotal() {
-		Double pesoDelEnvioTotal = 0.0;
-		for (int i = 0; i < paquetes.size(); i++) {
-			if(paquetes.get(i) != null )
-			pesoDelEnvioTotal += paquetes.get(i).getPeso();
-		}
-		return pesoDelEnvioTotal;
-	}
-
-	@Override
 	public int cantidadDeCiudadesPorEnvio() {			
 		for (int i = 0; i < contadorDePaquetesAgregados; i++) {
 	        Paquete paquete = paquetes.get(i);
 	        if (paquete != null && paquete.getCiudad() != null) {
 
-	        	if(ciudadesUnicas.add(paquete.getCiudad())) {
+	        	if(ciudadesUnicas.size() < MAX_CIUDADES_QUE_RECORRE) {
+	        		ciudadesUnicas.add(paquete.getCiudad());
 		            contadorDeCiudades++;
 	        	}	                      
 	        }              
 		}     
 	    return contadorDeCiudades;
 	}
-		
-	
-	
+
 	@Override
 	public Boolean llevarPaquete() {
 		Double volumenDelPaquete = 0.0;
@@ -124,10 +67,6 @@ public class Automovil extends Transporte{
 	
 	public String getIdAutoPatente() {
 		return idAutoPatente;
-	}
-
-	public Integer getIdAuto() {
-		return idAuto;
 	}
 
 	public void setIdAuto(Integer idAuto) {

@@ -98,8 +98,6 @@ public class Paquete implements Comparable<Paquete>{
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		Paquete other = (Paquete) obj;
 		return Objects.equals(idPaquetePatente, other.idPaquetePatente);
 	}

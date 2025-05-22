@@ -37,7 +37,7 @@ public class EmpresaTransportesTest {
 		@Test
 		public void queSePuedaAgregarUnPaqueteAlVehiculo() {
 			//Preparacion
-			Transporte olmo;
+			Bicicleta olmo;
 			Paquete notbook;
 			EmpresaDeTransporte andreani;
 			

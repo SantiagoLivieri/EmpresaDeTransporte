@@ -13,9 +13,7 @@ public class Camion extends Transporte{
 	private static Integer idCamiontaGlobal = 0;
 	private  Integer idCamion;
 	private String idCamionPatente = "C";
-	int contadorDePaquetesAgregados;
 	int contadorDeCiudades;
-	private List<Paquete> paquetes; 
 	private List<Ciudades> ciudadesUnicas;
 	
 	Camion(Double maxVolumenDeCarga, Double maxPesoDeCarga, Integer maxCiudadesQueRecorreElVehiculo) {
@@ -23,9 +21,7 @@ public class Camion extends Transporte{
 		maxVolumenDeCarga = this.MAX_VOLUMEN_CARGA;
 		maxPesoDeCarga = this.MAX_PESO_CARGA;
 		maxCiudadesQueRecorreElVehiculo = this.MAX_CIUDADES_QUE_RECORRE;
-		this.paquetes = new ArrayList<>();
 		this.ciudadesUnicas = new ArrayList<>();
-		this.contadorDePaquetesAgregados = 0;
 		this.contadorDeCiudades = 0;
 		idCamion =idCamiontaGlobal;
 		idCamionPatente += idCamiontaGlobal;
@@ -34,59 +30,6 @@ public class Camion extends Transporte{
 	
 	private void idAutoIncremental() {
 		setIdCamion(++idCamiontaGlobal);
-	}
-
-	@Override
-	public String numeroPaquetePatente(Paquete paquete) {
-		System.out.println(paquete.getIdPaquetePatente());
-		return paquete.getIdPaquetePatente();
-	}
-
-	@Override
-	public Boolean existePaquete(Paquete paquete) {
-		for (Paquete paquete2 : paquetes) {				 
-			 if(paquete2 != null) {					
-				 if(paquete.equals(paquete2)) {
-					//Da verdadero si el paquete que estoy agregando es igual al paquete que ya agrege
-			    	  return  true;  
-				 }
-					//Da falso si el paquete es diferente		      
-			 	}		 
-		 	}//Da falso si el paquete es nulo 
-	 return false; 	
-	}
-
-	@Override
-	public Boolean agregarPaqueteAlEnvio(Paquete paquete) { 
-			 if(paquete != null){
-				//Si el paquete que agrego no es nulo			
-			 if(!existePaquete(paquete)) {	
-								paquetes.add(paquete);
-								contadorDePaquetesAgregados++;
-								return true;
-						}
-					}
-		return false;	 
-	}
-
-	@Override
-	public Double calcularVolumenDelEnvioTotal() {
-		Double volumenDelEnvioTotal = 0.0;
-		for (int i = 0; i < paquetes.size(); i++) {
-			if(paquetes.get(i) != null )
-			volumenDelEnvioTotal += paquetes.get(i).calcularVolumen();
-		}
-		return volumenDelEnvioTotal;
-	}
-
-	@Override
-	public Double calcularPesoDelEnvioTotal() {
-		Double pesoDelEnvioTotal = 0.0;
-		for (int i = 0; i < paquetes.size(); i++) {
-			if(paquetes.get(i) != null )
-			pesoDelEnvioTotal += paquetes.get(i).getPeso();
-		}
-		return pesoDelEnvioTotal;
 	}
 
 	@Override
@@ -124,10 +67,6 @@ public class Camion extends Transporte{
 		return idCamionPatente;
 	}
 	
-	public Integer getIdCamion() {
-		return idCamion;
-	}
-
 	private void setIdCamion(Integer idCamion) {
 		this.idCamion = idCamion;
 	}
